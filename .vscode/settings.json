@@ -11,8 +11,12 @@
     "darkgradient",
     "darknone",
     "devflow",
+    "downvote",
+    "downvoted",
     "downvotes",
     "forecolor",
+    "hasdown",
+    "hasup",
     "hookform",
     "insertdatetime",
     "lucide",
@@ -25,7 +29,9 @@
     "tailwindcss",
     "tinymce",
     "trpc",
+    "upvote",
     "upvotes",
+    "upvoting",
     "visualblocks"
   ]
 }
