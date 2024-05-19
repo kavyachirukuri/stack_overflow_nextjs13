@@ -9,7 +9,7 @@ export interface IUser extends Document {
   bio?: string;
   picture: string;
   location?: string;
-  portfolio_website_link?: string;
+  portfolioWebsite?: string;
   reputation?: string;
   saved: Schema.Types.ObjectId[];
   joinedAt: Date;
@@ -24,12 +24,11 @@ const UserSchema = new Schema({
   bio: { type: String },
   picture: { type: String, required: true },
   location: { type: String },
-  portfolio_website_link: { type: String },
+  portfolioWebsite: { type: String },
   reputation: { type: String, default: 0 },
   saved: [{ type: Schema.Types.ObjectId, ref: "Question" }],
   joinedAt: { type: Date, default: Date.now },
 });
 
 const User = models.User || model("User", UserSchema);
-
 export default User;
