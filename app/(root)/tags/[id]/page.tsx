@@ -1,11 +1,9 @@
 import QuestionCard from "@/components/cards/QuestionCard";
 import NoResult from "@/components/shared/NoResult";
 import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
-import { QuestionFilters } from "@/constants/filters";
 import { IQuestion } from "@/database/question.model";
 import { getQuestionsByTagId } from "@/lib/actions/tag.actions";
 import { URLProps } from "@/types";
-import React from "react";
 
 const Page = async ({ params, searchParams }: URLProps) => {
   const result = await getQuestionsByTagId({
@@ -19,7 +17,7 @@ const Page = async ({ params, searchParams }: URLProps) => {
 
       <div className="mt-11 w-full">
         <LocalSearchbar
-          route="/"
+          route={`/tags/${params.id}`}
           iconPosition="right"
           imgSrc="/assets/icons/search.svg"
           placeholder="Search tag questions"
