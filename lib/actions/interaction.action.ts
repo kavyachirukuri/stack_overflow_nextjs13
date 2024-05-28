@@ -7,7 +7,7 @@ import Interaction from "@/database/interaction.model";
 
 export async function viewQuestion(params: ViewQuestionParams) {
   try {
-    connectToDatabase();
+    await connectToDatabase();
 
     const { questionId, userId } = params;
 
@@ -21,10 +21,9 @@ export async function viewQuestion(params: ViewQuestionParams) {
         question: questionId,
       });
 
-      if (existingInteraction) return;
+      if (existingInteraction) return console.log("User has already viewed.");
 
       // Create interaction
-
       await Interaction.create({
         user: userId,
         action: "view",
