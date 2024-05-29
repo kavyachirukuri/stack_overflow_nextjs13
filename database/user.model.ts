@@ -10,7 +10,7 @@ export interface IUser extends Document {
   picture: string;
   location?: string;
   portfolio_website_link?: string;
-  reputation?: string;
+  reputation?: number;
   saved: Schema.Types.ObjectId[];
   joinedAt: Date;
 }
@@ -25,7 +25,7 @@ const UserSchema = new Schema({
   picture: { type: String, required: true },
   location: { type: String },
   portfolio_website_link: { type: String },
-  reputation: { type: String, default: 0 },
+  reputation: { type: Number, default: 0 },
   saved: [{ type: Schema.Types.ObjectId, ref: "Question" }],
   joinedAt: { type: Date, default: Date.now },
 });
