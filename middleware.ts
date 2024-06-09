@@ -7,6 +7,7 @@ const isProtectedRoute = createRouteMatcher([
   // "/tags",
   "/tags/:id",
   "/profile/:id",
+  "/collection",
   // "/community",
   // "/jobs",
 ]);
