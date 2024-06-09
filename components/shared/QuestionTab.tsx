@@ -6,7 +6,7 @@ import Pagination from "./Pagination";
 
 interface Props extends SearchParamsProps {
   userId: string;
-  clerkId?: string | null;
+  clerkId?: string | undefined; // initally null, due to typescript error, changed to undefined for deployment purpose
 }
 
 const QuestionTab = async ({ searchParams, userId, clerkId }: Props) => {
