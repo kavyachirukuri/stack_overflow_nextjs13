@@ -7,6 +7,7 @@ import Votes from "@/components/shared/Votes";
 import { getQuestionById } from "@/lib/actions/question.action";
 import { getUserById } from "@/lib/actions/user.action";
 import { formatAndDivideNumber, getTimestamp } from "@/lib/utils";
+// @ts-expect-error
 import { auth } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";

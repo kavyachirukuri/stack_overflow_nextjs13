@@ -6,6 +6,7 @@ import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 import { QuestionFilters } from "@/constants/filters";
 import { getSavedQuestions } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
+// @ts-expect-error
 import { auth } from "@clerk/nextjs";
 
 export default async function Home({ searchParams }: SearchParamsProps) {

@@ -1,6 +1,7 @@
 import Profile from "@/components/forms/Profile";
 import { getUserById } from "@/lib/actions/user.action";
 import { ParamsProps } from "@/types";
+// @ts-expect-error
 import { auth } from "@clerk/nextjs";
 
 const Page = async ({ params }: ParamsProps) => {

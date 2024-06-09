@@ -13,6 +13,7 @@ import {
 import { SearchParamsProps } from "@/types";
 import Link from "next/link";
 import type { Metadata } from "next";
+// @ts-expect-error
 import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
