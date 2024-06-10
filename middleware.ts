@@ -5,7 +5,7 @@ const isProtectedRoute = createRouteMatcher([
   // "/api/webhook",
   // "/question/:id",
   // "/tags",
-  "/tags/:id",
+  // "/tags/:id",
   "/profile/:id",
   "/collection",
   // "/community",
