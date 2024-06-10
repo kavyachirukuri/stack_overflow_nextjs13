@@ -19,7 +19,6 @@ const GlobalResult = () => {
   ]);
   const global = searchParams.get("global");
   const type = searchParams.get("type");
-
   useEffect(() => {
     const fetchResult = async () => {
       setResult([]);
@@ -28,7 +27,6 @@ const GlobalResult = () => {
       try {
         // EVERYTHING EVERYWHERE ALL AT ONCE... -> GLOBAL SEARCH
         const res = await globalSearch({ query: global, type });
-
         setResult(JSON.parse(res));
       } catch (error) {
         console.log(error);

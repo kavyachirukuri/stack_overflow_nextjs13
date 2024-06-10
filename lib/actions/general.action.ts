@@ -34,7 +34,6 @@ export async function globalSearch(params: SearchParams) {
         const queryResults = await model
           .find({ [searchField]: regexQuery })
           .limit(2);
-
         results.push(
           ...queryResults.map((item) => ({
             title:
@@ -44,7 +43,7 @@ export async function globalSearch(params: SearchParams) {
             type,
             id:
               type === "user"
-                ? item.clerkid
+                ? item.clerkId
                 : type === "answer"
                   ? item.question
                   : item._id,
