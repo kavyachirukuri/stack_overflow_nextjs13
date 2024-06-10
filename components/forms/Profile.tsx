@@ -73,7 +73,7 @@ const Profile = ({ clerkId, user }: Props) => {
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (
+          render={({ field }: any) => (
             <FormItem className="space-y-3.5">
               <FormLabel className="paragraph-semibold text-dark400_light800">
                 Name <span className="text-primary-500">*</span>{" "}
@@ -94,7 +94,7 @@ const Profile = ({ clerkId, user }: Props) => {
         <FormField
           control={form.control}
           name="username"
-          render={({ field }) => (
+          render={({ field }: any) => (
             <FormItem className="space-y-3.5">
               <FormLabel className="paragraph-semibold text-dark400_light800">
                 Username <span className="text-primary-500">*</span>{" "}
@@ -115,29 +115,31 @@ const Profile = ({ clerkId, user }: Props) => {
         <FormField
           control={form.control}
           name="portfolioWebsite"
-          render={({ field }) => (
-            <FormItem className="space-y-3.5">
-              <FormLabel className="paragraph-semibold text-dark400_light800">
-                Portfolio Link
-              </FormLabel>
-              <FormControl>
-                <Input
-                  type="url"
-                  placeholder="Your portfolio URL"
-                  className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
-                  {...field}
-                />
-              </FormControl>
+          render={({ field }: any) => {
+            return (
+              <FormItem className="space-y-3.5">
+                <FormLabel className="paragraph-semibold text-dark400_light800">
+                  Portfolio Link
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type="url"
+                    placeholder="Your portfolio URL"
+                    className="no-focus paragraph-regular light-border-2 background-light800_dark300 text-dark300_light700 min-h-[56px] border"
+                    {...field}
+                  />
+                </FormControl>
 
-              <FormMessage />
-            </FormItem>
-          )}
+                <FormMessage />
+              </FormItem>
+            );
+          }}
         />
 
         <FormField
           control={form.control}
           name="location"
-          render={({ field }) => (
+          render={({ field }: any) => (
             <FormItem className="space-y-3.5">
               <FormLabel className="paragraph-semibold text-dark400_light800">
                 Location
@@ -158,7 +160,7 @@ const Profile = ({ clerkId, user }: Props) => {
         <FormField
           control={form.control}
           name="bio"
-          render={({ field }) => (
+          render={({ field }: any) => (
             <FormItem className="space-y-3.5">
               <FormLabel className="paragraph-semibold text-dark400_light800">
                 Bio <span className="text-primary-500">*</span>{" "}

@@ -18,6 +18,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { createAnswer } from "@/lib/actions/answer.action";
 import { usePathname } from "next/navigation";
+import { toast } from "../ui/use-toast";
 
 interface Props {
   question: string;
@@ -65,7 +66,11 @@ const Answer = ({ question, questionId, authorId }: Props) => {
   };
 
   const generateAIAnswer = async () => {
-    if (!authorId) return;
+    if (!authorId)
+      return toast({
+        title: "Please log in",
+        description: "You must be logged in to generate an AI Answer",
+      });
 
     setIsSubmittingAI(true);
 
@@ -90,6 +95,10 @@ const Answer = ({ question, questionId, authorId }: Props) => {
       }
 
       // Toast...
+      toast({
+        title: "AI Answer Generated",
+        variant: "default",
+      });
     } catch (error) {
       console.log(error);
     } finally {
@@ -130,7 +139,7 @@ const Answer = ({ question, questionId, authorId }: Props) => {
           <FormField
             control={form.control}
             name="answer"
-            render={({ field }) => (
+            render={({ field }: any) => (
               <FormItem className="flex w-full flex-col gap-3">
                 <FormControl className="mt-3.5">
                   <Editor
