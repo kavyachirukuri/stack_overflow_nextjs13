@@ -16,7 +16,7 @@ import type { Metadata } from "next";
 import { auth } from "@clerk/nextjs/server";
 
 export const metadata: Metadata = {
-  title: "Home | Dev Overflow",
+  title: "Home | TechOverflow",
 };
 
 export default async function Home({ searchParams }: SearchParamsProps) {
