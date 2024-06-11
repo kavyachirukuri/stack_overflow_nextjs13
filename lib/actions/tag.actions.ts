@@ -1,15 +1,16 @@
 "use server";
 
+import Interaction from "@/database/interaction.model";
+import Question from "@/database/question.model";
 import Tag, { ITag } from "@/database/tag.model";
+import User from "@/database/user.model";
+import { FilterQuery } from "mongoose";
 import { connectToDatabase } from "../mongoose";
 import {
   GetAllTagsParams,
   GetQuestionsByTagIdParams,
   GetTopInteractedTagsParams,
 } from "./shared.types";
-import User from "@/database/user.model";
-import Question from "@/database/question.model";
-import { FilterQuery } from "mongoose";
 
 export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
   try {
@@ -23,11 +24,31 @@ export async function getTopInteractedTags(params: GetTopInteractedTagsParams) {
 
     // Find interactions for the user and group by tags...
     // Interaction...
+    const interactions = await Interaction.aggregate([
+      { $match: { user: user._id } },
+      { $unwind: "$tags" },
+      { $group: { _id: "$tags", count: { $sum: 1 } } },
+      {
+        $lookup: {
+          from: "tags",
+          localField: "_id",
+          foreignField: "_id",
+          as: "tagDetails",
+        },
+      },
+      { $unwind: "$tagDetails" },
+      {
+        $project: {
+          _id: 1,
+          name: "$tagDetails.name",
+          count: 1,
+        },
+      },
+      { $sort: { count: -1 } },
+      { $limit: 3 },
+    ]);
 
-    return [
-      { _id: "1", name: "React" },
-      { _id: "2", name: "Html" },
-    ];
+    return interactions;
   } catch (error) {
     console.log(error);
     throw error;
